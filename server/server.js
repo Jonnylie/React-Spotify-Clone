@@ -6,12 +6,13 @@ const lyricsFinder = require("lyrics-finder");
 const SpotifyWebApi = require("spotify-web-api-node");
 
 const app = express();
+const PORT = 3002;
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/login", (req, res) => {
-  // console.log("hi");
   const code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
     redirectUri: process.env.REDIRECT_URI,
@@ -64,4 +65,6 @@ app.get("/lyrics", async (req, res) => {
   res.json({ lyrics });
 });
 
-app.listen(3002);
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
