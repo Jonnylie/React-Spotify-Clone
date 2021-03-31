@@ -1,0 +1,47 @@
+.dashboard {
+  background: linear-gradient(#23262f, #1e1322);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
+  border: 0.5px solid grey;
+}
+
+.background {
+  background: linear-gradient(#27282b, #150619);
+  height: 100vh;
+}
+
+.search-bar {
+  background-color: #221f29;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 30px;
+  border: 1px solid grey;
+  background: require("./assets/image2.jpg") no-repeat scroll 7px 7px;
+}
+
+input:focus,
+input.form-control:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.title {
+  color: white;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: wheat;
+  font-weight: 300;
+}
+
+.lyrics-font {
+  color: white;
+}

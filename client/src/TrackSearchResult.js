@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/Dashboard.css";
 
 export default function TrackSearchResult({ track, chooseTrack }) {
   const handlePlay = () => {
@@ -12,8 +13,8 @@ export default function TrackSearchResult({ track, chooseTrack }) {
     >
       <img src={track.albumUrl} style={{ height: "64px", width: "64px" }} />
       <div className="ml-3">
-        <div>{track.title}</div>
-        <div className="text-muted">{track.artist}</div>
+        <div className="title">{track.title}</div>
+        <div className="subtitle">{track.artist}</div>
       </div>
     </div>
   );

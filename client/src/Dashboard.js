@@ -5,6 +5,7 @@ import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "./TrackSearchResult";
 import Player from "./Player";
 import axios from "axios";
+import "./css/Dashboard.css";
 
 const spotifyApi = new SpotifyWebApi({
   clientId: "f33d002eac3a48c39918706f7a240fca",
@@ -61,7 +62,7 @@ export default function Dashboard({ code }) {
     if (!playingTrack) return;
 
     axios
-      .get("https://react-spotify-express.herokuapp.com/lyrics", {
+      .get("http://localhost:3001/lyrics", {
         params: {
           track: playingTrack.title,
           artist: playingTrack.artist,
@@ -73,30 +74,39 @@ export default function Dashboard({ code }) {
   }, [playingTrack]);
 
   return (
-    <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}>
-      <Form.Control
-        type="search"
-        placeholder="Search Songs/Artists/Albums"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
-        {searchResults.map((track) => (
-          <TrackSearchResult
-            track={track}
-            key={track.uri}
-            chooseTrack={chooseTrack}
-          />
-        ))}
-        {searchResults.length === 0 && (
-          <div className="text-center" style={{ whiteSpace: "pre" }}>
-            {lyrics}
-          </div>
-        )}
-      </div>
-      <div>
-        <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
-      </div>
-    </Container>
+    <div className="background">
+      <Container
+        className="d-flex flex-column py-4 dashboard"
+        style={{ height: "95vh" }}
+      >
+        <Form.Control
+          type="search"
+          className="search-bar"
+          placeholder="Search Songs/Artists/Albums"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
+          {searchResults.map((track) => (
+            <TrackSearchResult
+              track={track}
+              key={track.uri}
+              chooseTrack={chooseTrack}
+            />
+          ))}
+          {searchResults.length === 0 && (
+            <div
+              className="text-center lyrics-font"
+              style={{ whiteSpace: "pre" }}
+            >
+              {lyrics}
+            </div>
+          )}
+        </div>
+        <div>
+          <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+        </div>
+      </Container>
+    </div>
   );
 }

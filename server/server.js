@@ -6,7 +6,7 @@ const lyricsFinder = require("lyrics-finder");
 const SpotifyWebApi = require("spotify-web-api-node");
 
 const app = express();
-const PORT = 3002;
+const PORT = 3001;
 
 app.use(cors());
 app.use(bodyParser.json());
