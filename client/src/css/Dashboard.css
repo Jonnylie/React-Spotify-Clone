@@ -1,9 +1,5 @@
 .dashboard {
   background: linear-gradient(#23262f, #1e1322);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 25px;
   border: 0.5px solid grey;
 }
@@ -11,25 +7,63 @@
 .background {
   background: linear-gradient(#27282b, #150619);
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  height: 35px;
+  background-color: #221f29;
+}
+
+.searchContainer {
+  display: grid;
+  border-radius: 30px;
+  border: 1px solid grey;
+  grid-template-columns: 1.5rem 4fr 1fr;
+  width: 300px;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #221f29;
+}
+
+.searchContainer:focus-within i {
+  display: none;
+}
+
+.searchContainer:focus-within .searchBox {
+  grid-column: 1/4;
+}
+
+.searchContainer:focus-within .searchBox::placeholder {
+  color: transparent;
+}
+
+.searchIcon {
+  padding: 0.5rem;
+  grid-row: 1;
+  grid-column: 1/2;
+  z-index: 2;
+  color: white;
+  background: none;
+}
+
+.searchBox {
+  border: 0;
+  padding: 0.5rem;
+  grid-column: 2/4;
+  grid-row: 1;
+  outline: none;
+  color: white;
+  border-radius: 30px;
 }
 
 .search-bar {
   background-color: #221f29;
   width: 70%;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 30px;
-  border: 1px solid grey;
-  background: require("./assets/image2.jpg") no-repeat scroll 7px 7px;
-}
-
-input:focus,
-input.form-control:focus {
-  outline: none !important;
-  outline-width: 0 !important;
-  box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
+  background: url("https://raw.githubusercontent.com/Jonnylie/React-Spotify-Clone/master/client/src/assets/search-icon.png");
 }
 
 .title {

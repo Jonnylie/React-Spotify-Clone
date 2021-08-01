@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useAuth from "./useAuth";
-import { Container, Form } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "./TrackSearchResult";
 import Player from "./Player";
@@ -62,7 +62,7 @@ export default function Dashboard({ code }) {
     if (!playingTrack) return;
 
     axios
-      .get("http://localhost:3001/lyrics", {
+      .get(" https://react-spotify-express.herokuapp.com/lyrics", {
         params: {
           track: playingTrack.title,
           artist: playingTrack.artist,
@@ -79,13 +79,17 @@ export default function Dashboard({ code }) {
         className="d-flex flex-column py-4 dashboard"
         style={{ height: "95vh" }}
       >
-        <Form.Control
-          type="search"
-          className="search-bar"
-          placeholder="Search Songs/Artists/Albums"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="searchContainer">
+          <i className="fa fa-search searchIcon"></i>
+          <input
+            className="searchBox"
+            type="search"
+            name="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search Songs/Artists/Albums"
+          />
+        </div>
         <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
           {searchResults.map((track) => (
             <TrackSearchResult
